@@ -58,9 +58,9 @@ function checkoutWhatsApp() {
   cart.forEach(x => {
     const p = products.find(a => a.id === x.id); if (!p) return;
     const productUrl = `${baseUrl}/categories/${p.slug}.html?v=5`;
-    msg += `• ${p.name} — ${money(p.price,p.currency)} — Qty ${x.qty}\n`;
-    msg += `Colour: ${x.color}\nSize: ${x.size}\n`;
-    if (x.measurements) msg += `Measurements: ${x.measurements}\n`;
+    msg += `• ${p.name} —\n 💰 ${money(p.price,p.currency)} — \n 🛒 Qty ${x.qty}\n`;
+    msg += `⚪Colour: ${x.color}\nSize: ${x.size}\n`;
+    if (x.measurements) msg += `📏 Measurements: ${x.measurements}\n`;
     msg += `${productUrl}\n\n`;
   });
   msg += "Please confirm availability, fitting/customization details and delivery information.";
