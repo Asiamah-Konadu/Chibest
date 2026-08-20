@@ -58,7 +58,7 @@ function checkoutWhatsApp() {
   cart.forEach(x => {
     const p = products.find(a => a.id === x.id); if (!p) return;
     const productUrl = `${baseUrl}/categories/${p.slug}.html?v=5`;
-    msg += `• ${p.name} —\n 💰 ${money(p.price,p.currency)} — \n 🛒 Qty ${x.qty}\n`;
+    msg += `• ${p.name} —\n 💰${money(p.price,p.currency)} — \n 🛒 Qty ${x.qty}\n`;
     msg += `⚪Colour: ${x.color}\nSize: ${x.size}\n`;
     if (x.measurements) msg += `📏 Measurements: ${x.measurements}\n`;
     msg += `${productUrl}\n\n`;
@@ -74,8 +74,8 @@ function orderCategory(product) {
   const measurements = document.querySelector("#orderMeasurements")?.value.trim() || "";
   const slug = product.slug || products.find(x => x.name === product.name)?.slug || product.name.toLowerCase().replace(/[^a-z0-9]+/g,"-");
   if (!size) { toast("Please select a size"); return; }
-  let msg = `Hello Chibest Fashion Worldwide, I would like to order:\n\n• ${product.name} — ${money(product.price,product.currency)} — Qty ${qty}\nColour: ${color}\nSize: ${size}\n`;
-  if (measurements) msg += `Measurements: ${measurements}\n`;
+  let msg = `Hello Chibest Fashion Worldwide, I would like to order:\n\n• ${product.name} —\n💰 ${money(product.price,product.currency)} —\n🛒 Qty ${qty}\n⚪ Colour: ${color}\n📏 Size: ${size}\n`;
+  if (measurements) msg += `📏 Measurements: ${measurements}\n`;
   msg += `${window.location.origin}/categories/${slug}.html?v=5\n\nPlease confirm availability, fitting/customization details and delivery information.`;
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
 }
